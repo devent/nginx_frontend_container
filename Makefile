@@ -2,7 +2,7 @@ VERSION := 1.11
 NAME := nginx-frontend
 CONF := nginx.conf
 SITES := sites
-DNS_SERVER  := 172.17.0.3
+DNS_SERVER := 172.17.0.3
 
 define DOCKER_CMD :=
 docker run \
@@ -15,9 +15,13 @@ docker run \
 nginx:$(VERSION)
 endef
 
-include ../make_utils/Makefile.help
-include ../make_utils/Makefile.functions
-include ../make_utils/Makefile.container
+define DOCKER_RUN :=
+docker start $(NAME)
+endef
+
+include ../docker_make_utils/Makefile.help
+include ../docker_make_utils/Makefile.functions
+include ../docker_make_utils/Makefile.container
 
 .PHONY +: run rerun rm clean test restart bash
 
@@ -32,7 +36,7 @@ clean: _clean ##@targets Stops and removes the container and removes all created
 test: _test ##@targets Tests if the container is running.
 
 restart: ##@targets Restarts the container.
-	if $(container_run); then \
+	if $(container_running); then \
 	docker exec $(NAME) nginx -s reload; \
 	else \
 	$(MAKE) rerun; \

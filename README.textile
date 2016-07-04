@@ -1,0 +1,29 @@
+* !https://anrisoftware.com/projects/attachments/download/217/apache2.0-small.gif! (© 2016 Erwin Müller)
+* "Source github.com":https://github.com/devent/nginx_frontend_container
+* @git@anrisoftware.com:nginx_frontend_container.git@
+* @git@github.com:devent/nginx_frontend_container.git@
+
+h1. Nginx Frontend Docker Image
+
+This project contains scripts to run a Nginx frontend server as a docker container. It uses the Weave network to connect the frontend to other containers.
+
+|_.Name|_.Version|
+|nginx|1.11|
+
+h2. Usage
+
+To run the container simple invoke the @make@ command. The default goal will start the container. 
+
+<pre>
+$ make
+</pre>
+
+The following files are mounted inside the container.
+
+|_.File|_.Mount|_.Description|
+|nginx.conf|/etc/nginx/nginx.conf:ro|The Nginx main configuration.|
+|sites/|/etc/nginx/sites-enabled:ro|The virtual hosts.|
+
+h2. License
+
+Licensed under a "Apache 2.0 License.":http://www.apacheorg/licenses/LICENSE-2.0 Permissions beyond the scope of this license may be available at @erwin.mueller@deventm.org@ or @erwin.mueller@nttdata.com@.

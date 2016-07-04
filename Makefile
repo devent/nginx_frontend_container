@@ -15,10 +15,6 @@ docker run \
 nginx:$(VERSION)
 endef
 
-define DOCKER_RUN :=
-docker start $(NAME)
-endef
-
 include ../docker_make_utils/Makefile.help
 include ../docker_make_utils/Makefile.functions
 include ../docker_make_utils/Makefile.container
